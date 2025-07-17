@@ -82,7 +82,8 @@ int main(int argc, char **argv) try {
 		res.set_content(body, "application/json");
 	});
 
-	srv.set_exception_handler([](const http::Request &req, http::Response &res, std::exception &e) {
+	// svr.set_exception_handler([](const auto& req, auto& res, std::exception_ptr ep)
+	srv.set_exception_handler([](const auto& req, auto& res, std::exception_ptr e) {
 		res.status = 500;
 		res.set_content("500 Internal Server Error", "text/plain");
 	});
